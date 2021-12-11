@@ -5,6 +5,26 @@
  */
 public class FibonacciHeap
 {
+    private int size;
+    private int numTree;
+    private int numMarked;
+    private static int Links;
+    private static int cuts;
+    private HeapNode start;
+    private HeapNode tail;
+    private HeapNode min;
+
+    //
+    private void addAtStart(HeapNode node){}
+
+    //
+    private void addAtTail(HeapNode node){}
+
+    private HeapNode  link(HeapNode node1 , HeapNode node2){}
+
+    private void putFamily(HeapNode root ){}
+
+
 
    /**
     * public boolean isEmpty()
@@ -25,9 +45,13 @@ public class FibonacciHeap
     * 
     * Returns the newly created node.
     */
-    public HeapNode insert(int key)
-    {    
-    	return new HeapNode(key); // should be replaced by student code
+    public HeapNode insert(int key){
+    	//addAtStart();
+        // size+1
+        // check change min
+
+        return new HeapNode(key);
+
     }
 
    /**
@@ -38,8 +62,17 @@ public class FibonacciHeap
     */
     public void deleteMin()
     {
+        // putFamily
+        // consolidition
+
      	return; // should be replaced by student code
      	
+    }
+
+    private void consolidation(){
+        // make array of size O(logn)
+        //interate over childs and make links
+        // iterate over array and fix prev next and start & tail
     }
 
    /**
@@ -172,8 +205,17 @@ public class FibonacciHeap
     *  
     */
     public static class HeapNode{
+        //TODO WHY PUBLIC
+       public HeapNode child;
+       public HeapNode parent;
+       public HeapNode prev;
+       public HeapNode next;
+       public boolean marked;
+       public int key;
 
-    	public int key;
+       //TODO ALL SET FUNCTIONS
+
+       //TODO ALL RETURN FUNCTIONS
 
     	public HeapNode(int key) {
     		this.key = key;
