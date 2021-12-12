@@ -20,7 +20,8 @@ public class FibonacciHeap
         this.start = node; //set the node to be the first
         node.next = tmp;
         tmp.prev = node;
-        if (tmp == null){ //if this node is the only one (do we need it?)
+        //TODO CIRCLE CONNECTION
+        if (tmp == null){ //if this node is the only one (do we need it?) //TODO CONDITION SHOULD BE EMPTY
             this.tail = node;
         }
     }
@@ -30,13 +31,14 @@ public class FibonacciHeap
         this.tail.next = node; //attach the node to the last one
         node.prev = this.tail;
         this.tail = node;
-        if (node.prev == null){ //need??
+        //TODO CIRCLE CONNECTION
+        if (node.prev == null){ //need?? //TODO CONDITION SHOULD BE EMPTY
             this.start = node;
         }
     }
 
     private HeapNode  link(HeapNode node1 , HeapNode node2){
-        if (node1.getKey() > node2.getKey()) {
+        if (node1.getKey() > node2.getKey()) { // always node1 < node2
             HeapNode tmp = node1;
             node1 = node2;
             node2 = tmp;
@@ -45,6 +47,8 @@ public class FibonacciHeap
             node2.setNext(node1.getChild());
             node1.getChild().getPrev().setNext(node2);
             node1.getChild().setPrev(node2);
+            //TODO SOME CONNECTIONS IS MISSING? BETWEEN NEW CHILD AND LAST CHILD?
+            //TODO MAYBE insertNodeInthemiddle func we be good for as
         }
         node1.setChild(node2);
         node2.setParent(node1);
