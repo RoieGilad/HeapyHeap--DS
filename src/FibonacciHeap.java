@@ -52,7 +52,7 @@ public class FibonacciHeap
         }
         node1.setChild(node2);
         node2.setParent(node1);
-
+        //TODO WHAT ABOUT RANK
         return node1; //return the new root
     }
 
