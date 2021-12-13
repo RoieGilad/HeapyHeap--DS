@@ -15,6 +15,11 @@ public class FibonacciHeap
     private HeapNode min;
 
     //
+
+    private void insertBefore(HeapNode newNode , HeapNode position){ // put newNode before position;
+
+    }
+
     private void addAtStart(HeapNode node){
         HeapNode tmp = this.start; //save the first tree
         this.start = node; //set the node to be the first
@@ -56,7 +61,8 @@ public class FibonacciHeap
         return node1; //return the new root
     }
 
-    private void putFamily(HeapNode root ){
+    private void putFamily(HeapNode firstNode , HeapNode position ){
+
         
     }
 
@@ -89,27 +95,69 @@ public class FibonacciHeap
         return new HeapNode(key);
 
     }
-
    /**
     * public void deleteMin()
     *
     * Deletes the node containing the minimum key.
     *
     */
-    public void deleteMin()
-    {
-        // putFamily
-        // consolidition
-
-     	return; // should be replaced by student code
-     	
+    public void deleteMin(){
+        this.putFamily(this.min); // delete min
+        this.size -= 1; // down size
+        this.consolidation(); // successive linking
     }
 
     private void consolidation(){
-        // make array of size O(logn)
-        //interate over childs and make links
-        // iterate over array and fix prev next and start & tail
+        HeapNode curr = this.start;
+        HeapNode tmp = null;
+        HeapNode[] basket = new HeapNode[2*((int)Math.log(this.size())+1)]; // make array of size O(logn) ---> size = 2*logn low value
+        while (tmp != this.start){ //interate over childs and make links
+             tmp = curr.getNext();
+             linkAndPut(curr ,basket);
+             curr = tmp;
+        }
+        boolean first = false;
+        int min = 0;
+        HeapNode currMin = null;
+        for (HeapNode node : basket ) { // iterate over array and fix prev next and start & tail
+
+            if (node != null) {
+                node.setParent(null);    // make sure all parent fields of root is null
+
+                if (!first) {
+                    currMin = node;
+                    min = currMin.getKey();
+                    this.addAtStart(node);
+                    first = true;
+                }
+                else {
+                    if (node.getKey() < min){
+                        min = node.getKey();
+                        currMin = node;}
+                    }
+                    this.addAtTail(node);
+                }}
+        this.min = currMin;
+        }
+
+    private void linkAndPut(HeapNode node  , HeapNode[] basket ){
+        int i = node.getRank();
+
+        if (basket[i] == null){ //just put in the basket
+            basket[i] = node;}
+
+        else{ // there is two heaps in the same rank ---> link together
+            HeapNode newRoot = link(node , basket[i]);
+            basket[i] = null;
+            linkAndPut(newRoot , basket);
+               }
+
     }
+
+
+
+
+
 
    /**
     * public HeapNode findMin()
