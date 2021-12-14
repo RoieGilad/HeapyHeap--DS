@@ -336,6 +336,7 @@ public class FibonacciHeap{
         public void decreaseKey (HeapNode x,int delta){
             // dont forget to update ranks , numTrees , numMarked (use makeUnmarked() ) , cuts
             // if make cut put in the subtree as this.start
+            // in cut --> the order of the other children remain the same
             return; // should be replaced by student code
         }
 

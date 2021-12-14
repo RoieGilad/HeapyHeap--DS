@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FibonacciHeap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,7 @@
       <updated>1639160429552</updated>
       <workItem from="1639160430932" duration="4688000" />
       <workItem from="1639406663382" duration="9705000" />
-      <workItem from="1639478496165" duration="8332000" />
+      <workItem from="1639478496165" duration="8600000" />
     </task>
     <servers />
   </component>
