@@ -14,7 +14,10 @@ public class FibonacciHeap
     private HeapNode tail;
     private HeapNode min;
 
-    //
+    //added for the meld
+    public HeapNode getStart(){
+        return this.start;
+    }
 
     private void insertBefore(HeapNode newNode , HeapNode position){ // put newNode before position;
 
@@ -49,21 +52,19 @@ public class FibonacciHeap
             node2 = tmp;
         }
         if (node1.getRank() > 0) { //attaching the children
-            node2.setNext(node1.getChild());
-            node1.getChild().getPrev().setNext(node2);
-            node1.getChild().setPrev(node2);
-            //TODO SOME CONNECTIONS IS MISSING? BETWEEN NEW CHILD AND LAST CHILD?
-            //TODO MAYBE insertNodeInthemiddle func we be good for as
+            insertBefore(node2, node1.getChild());
+        } else {
+            insertBefore(node2, node2); //like this? to check
         }
         node1.setChild(node2);
         node2.setParent(node1);
-        //TODO WHAT ABOUT RANK
+        node1.setRank(node1.getRank()+1); //node1.rank ++; // do we need a func setrank?
         return node1; //return the new root
     }
 
     private void putFamily(HeapNode firstNode , HeapNode position ){
 
-        
+
     }
 
 
@@ -76,7 +77,7 @@ public class FibonacciHeap
     */
     public boolean isEmpty()
     {
-    	return false; // should be replaced by student code
+    	return this.size() ==0; // should be replaced by student code
     }
 		
    /**
@@ -88,11 +89,17 @@ public class FibonacciHeap
     * Returns the newly created node.
     */
     public HeapNode insert(int key){
-    	//addAtStart();
+    	HeapNode node = new HeapNode(key);
+        this.addAtStart(node);
+        this.size ++;
+        if (isEmpty() || key<this.min.getKey()){
+            this.min = node;
+        }
+        //addAtStart();
         // size+1
         // check change min
 
-        return new HeapNode(key);
+        return node; //why return?
 
     }
    /**
@@ -167,7 +174,7 @@ public class FibonacciHeap
     */
     public HeapNode findMin()
     {
-    	return new HeapNode(678);// should be replaced by student code
+    	return this.isEmpty() ? null: this.min;// should be replaced by student code
     } 
     
    /**
@@ -178,7 +185,9 @@ public class FibonacciHeap
     */
     public void meld (FibonacciHeap heap2)
     {
-    	  return; // should be replaced by student code   		
+        link(this.tail, heap2.getStart());
+        this.size += heap2.size();
+    	  return; // should be replaced by student code
     }
 
    /**
@@ -189,7 +198,7 @@ public class FibonacciHeap
     */
     public int size()
     {
-    	return -123; // should be replaced by student code
+    	return this.size; // should be replaced by student code
     }
     	
     /**
