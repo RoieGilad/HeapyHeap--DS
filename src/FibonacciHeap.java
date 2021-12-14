@@ -334,10 +334,44 @@ public class FibonacciHeap{
          * to reflect this change (for example, the cascading cuts procedure should be applied if needed).
          */
         public void decreaseKey (HeapNode x,int delta){
+            int new_key = x.getKey()-delta;
+            if (x.getParent() == null | new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
+                x.setKey(new_key);
+            } else {
+                cascadingCut(x, x.getParent());
+            }
             // dont forget to update ranks , numTrees , numMarked (use makeUnmarked() ) , cuts
             // if make cut put in the subtree as this.start
             // in cut --> the order of the other children remain the same
-            return; // should be replaced by student code
+            // should be replaced by student code
+        }
+
+        private void cut(HeapNode node, HeapNode parent){ //real cut, update rank, unmark
+            node.setParent(null);
+            makeUnmarked(node); //the marked num will decrease in the func
+            parent.setRank(parent.getRank()-1);
+            if (node.getNext() == node){
+                parent.setChild(null);
+            } else { //connect children
+                parent.setChild(node.getNext());
+                node.getPrev().setNext(node.getNext());
+                node.getNext().setPrev(node.getPrev());
+            }
+            addAtStart(node);
+        }
+
+        private void cascadingCut(HeapNode node, HeapNode parent){ //update numTree + marks
+            cut(node, parent);
+            if (parent.getParent()!= null){
+                if (!parent.getMark()){
+                    parent.setMark(true);
+                    numMarked++;
+                } else{
+                    cascadingCut(parent, parent.getParent());
+                    numTree ++;
+                    cuts ++;
+                }
+            }
         }
 
         /**
@@ -447,6 +481,9 @@ public class FibonacciHeap{
        }
        public int getRank(){
            return this.rank;
+       }
+       public void setKey(int num){ //added for the decrease key
+           this.key = num;
        }
 
 
