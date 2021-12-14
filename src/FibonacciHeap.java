@@ -334,10 +334,12 @@ public class FibonacciHeap{
          * to reflect this change (for example, the cascading cuts procedure should be applied if needed).
          */
         public void decreaseKey (HeapNode x,int delta){
+            //TODO UPDATE MINIMUM
             int new_key = x.getKey()-delta;
+            //TODO IF PARENT HERE IS NULL -> NULL POINTER EXECPTION
             if (x.getParent() == null | new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
                 x.setKey(new_key);
-            } else {
+            } else { //TODO WHEN X.KEY IS UPDATE IN THAT CASE?
                 cascadingCut(x, x.getParent());
             }
             // dont forget to update ranks , numTrees , numMarked (use makeUnmarked() ) , cuts
@@ -350,10 +352,10 @@ public class FibonacciHeap{
             node.setParent(null);
             makeUnmarked(node); //the marked num will decrease in the func
             parent.setRank(parent.getRank()-1);
-            if (node.getNext() == node){
+            if (node.getNext() == node){ // only one child ---> make list of child empty
                 parent.setChild(null);
-            } else { //connect children
-                parent.setChild(node.getNext());
+            } else { //connect children by byPass node
+                parent.setChild(node.getNext()); //TODO NODE NOT ALWAYS THE FIRST CHILD
                 node.getPrev().setNext(node.getNext());
                 node.getNext().setPrev(node.getPrev());
             }
@@ -438,13 +440,21 @@ public class FibonacciHeap{
        public int key;
        public int rank;
 
+            // all functions are O(1)
+
+
        public HeapNode(int key) {
            this.key = key;
        }
 
+
+            // set function update the relevant field to the input of the function
+            // get function return the relevant field
+
        public void setChild(HeapNode node){
            this.child = node;
        }
+
        public HeapNode getChild(){
            return this.child;
        }
@@ -452,6 +462,7 @@ public class FibonacciHeap{
        public void setParent(HeapNode node){
            this.parent = node;
        }
+
        public HeapNode getParent(){
            return this.parent;
        }
@@ -459,6 +470,7 @@ public class FibonacciHeap{
        public void setNext(HeapNode node){
            this.next = node;
        }
+
        public HeapNode getNext(){
            return this.next;
        }
@@ -466,6 +478,7 @@ public class FibonacciHeap{
        public void setPrev(HeapNode node){
            this.prev = node;
        }
+
        public HeapNode getPrev(){
            return this.prev;
        }
@@ -479,9 +492,11 @@ public class FibonacciHeap{
        public void setRank(int k){
            this.rank = k;
        }
+
        public int getRank(){
            return this.rank;
        }
+
        public void setKey(int num){ //added for the decrease key
            this.key = num;
        }
