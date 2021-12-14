@@ -5,6 +5,68 @@
  */
 public class FibonacciHeap
 {
+    private int size;
+    private int numTree;
+    private int numMarked;
+    private static int Links;
+    private static int cuts;
+    private HeapNode start;
+    private HeapNode tail;
+    private HeapNode min;
+
+    //
+
+    private void insertBefore(HeapNode newNode , HeapNode position){ // put newNode before position;
+
+    }
+
+    private void addAtStart(HeapNode node){
+        HeapNode tmp = this.start; //save the first tree
+        this.start = node; //set the node to be the first
+        node.next = tmp;
+        tmp.prev = node;
+        //TODO CIRCLE CONNECTION
+        if (tmp == null){ //if this node is the only one (do we need it?) //TODO CONDITION SHOULD BE EMPTY
+            this.tail = node;
+        }
+    }
+
+    //
+    private void addAtTail(HeapNode node){
+        this.tail.next = node; //attach the node to the last one
+        node.prev = this.tail;
+        this.tail = node;
+        //TODO CIRCLE CONNECTION
+        if (node.prev == null){ //need?? //TODO CONDITION SHOULD BE EMPTY
+            this.start = node;
+        }
+    }
+
+    private HeapNode  link(HeapNode node1 , HeapNode node2){
+        if (node1.getKey() > node2.getKey()) { // always node1 < node2
+            HeapNode tmp = node1;
+            node1 = node2;
+            node2 = tmp;
+        }
+        if (node1.getRank() > 0) { //attaching the children
+            node2.setNext(node1.getChild());
+            node1.getChild().getPrev().setNext(node2);
+            node1.getChild().setPrev(node2);
+            //TODO SOME CONNECTIONS IS MISSING? BETWEEN NEW CHILD AND LAST CHILD?
+            //TODO MAYBE insertNodeInthemiddle func we be good for as
+        }
+        node1.setChild(node2);
+        node2.setParent(node1);
+        //TODO WHAT ABOUT RANK
+        return node1; //return the new root
+    }
+
+    private void putFamily(HeapNode firstNode , HeapNode position ){
+
+        
+    }
+
+
 
    /**
     * public boolean isEmpty()
@@ -25,22 +87,77 @@ public class FibonacciHeap
     * 
     * Returns the newly created node.
     */
-    public HeapNode insert(int key)
-    {    
-    	return new HeapNode(key); // should be replaced by student code
-    }
+    public HeapNode insert(int key){
+    	//addAtStart();
+        // size+1
+        // check change min
 
+        return new HeapNode(key);
+
+    }
    /**
     * public void deleteMin()
     *
     * Deletes the node containing the minimum key.
     *
     */
-    public void deleteMin()
-    {
-     	return; // should be replaced by student code
-     	
+    public void deleteMin(){
+        this.putFamily(this.min); // delete min
+        this.size -= 1; // down size
+        this.consolidation(); // successive linking
     }
+
+    private void consolidation(){
+        HeapNode curr = this.start;
+        HeapNode tmp = null;
+        HeapNode[] basket = new HeapNode[2*((int)Math.log(this.size())+1)]; // make array of size O(logn) ---> size = 2*logn low value
+        while (tmp != this.start){ //interate over childs and make links
+             tmp = curr.getNext();
+             linkAndPut(curr ,basket);
+             curr = tmp;
+        }
+        boolean first = false;
+        int min = 0;
+        HeapNode currMin = null;
+        for (HeapNode node : basket ) { // iterate over array and fix prev next and start & tail
+
+            if (node != null) {
+                node.setParent(null);    // make sure all parent fields of root is null
+
+                if (!first) {
+                    currMin = node;
+                    min = currMin.getKey();
+                    this.addAtStart(node);
+                    first = true;
+                }
+                else {
+                    if (node.getKey() < min){
+                        min = node.getKey();
+                        currMin = node;}
+                    }
+                    this.addAtTail(node);
+                }}
+        this.min = currMin;
+        }
+
+    private void linkAndPut(HeapNode node  , HeapNode[] basket ){
+        int i = node.getRank();
+
+        if (basket[i] == null){ //just put in the basket
+            basket[i] = node;}
+
+        else{ // there is two heaps in the same rank ---> link together
+            HeapNode newRoot = link(node , basket[i]);
+            basket[i] = null;
+            linkAndPut(newRoot , basket);
+               }
+
+    }
+
+
+
+
+
 
    /**
     * public HeapNode findMin()
@@ -172,12 +289,59 @@ public class FibonacciHeap
     *  
     */
     public static class HeapNode{
+        //TODO WHY PUBLIC
+       public HeapNode child;
+       public HeapNode parent;
+       public HeapNode prev;
+       public HeapNode next;
+       public boolean marked;
+       public int key;
+       public int rank;
 
-    	public int key;
+       public HeapNode(int key) {
+           this.key = key;
+       }
 
-    	public HeapNode(int key) {
-    		this.key = key;
-    	}
+       public void setChild(HeapNode node){
+           this.child = node;
+       }
+       public HeapNode getChild(){
+           return this.child;
+       }
+
+       public void setParent(HeapNode node){
+           this.parent = node;
+       }
+       public HeapNode getParent(){
+           return this.parent;
+       }
+
+       public void setNext(HeapNode node){
+           this.next = node;
+       }
+       public HeapNode getNext(){
+           return this.next;
+       }
+
+       public void setPrev(HeapNode node){
+           this.prev = node;
+       }
+       public HeapNode getPrev(){
+           return this.prev;
+       }
+
+       public void mark(){
+           this.marked = true;
+       }
+
+       public void setRank(int k){
+           this.rank = k;
+       }
+       public int getRank(){
+           return this.rank;
+       }
+
+
 
     	public int getKey() {
     		return this.key;
