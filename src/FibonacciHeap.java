@@ -1,3 +1,5 @@
+import com.sun.org.apache.xalan.internal.xsltc.dom.MultiValuedNodeHeapIterator;
+
 /**
  * FibonacciHeap
  *
@@ -117,13 +119,22 @@ public class FibonacciHeap{
     * 
     * Returns the newly created node.
     */
-    public HeapNode insert(int key){
-    	HeapNode node = new HeapNode(key);
+   public HeapNode insert(int key){
+       HeapNode tmp = new HeapNode(key);
+       return insert(tmp);
+
+   }
+    private void insert(int key ,HeapNode origin  ) {
+       HeapNode tmp = new HeapNode(key , origin);
+        insert(tmp);
+    }
+
+   private HeapNode insert(HeapNode node){
         this.addAtStart(node);
         this.size ++;
         this.numTree++;
 
-        if (isEmpty() || key<this.min.getKey()){
+        if (isEmpty() || node.getKey()<this.min.getKey()){
             this.min = node;
         }
         return node; //why return?
@@ -333,45 +344,48 @@ public class FibonacciHeap{
          * Decreases the key of the node x by a non-negative value delta. The structure of the heap should be updated
          * to reflect this change (for example, the cascading cuts procedure should be applied if needed).
          */
-        public void decreaseKey (HeapNode x,int delta){
-            //TODO UPDATE MINIMUM
+        public void decreaseKey (HeapNode x , int delta){
             int new_key = x.getKey()-delta;
-            //TODO IF PARENT HERE IS NULL -> NULL POINTER EXECPTION
-            if (x.getParent() == null | new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
-                x.setKey(new_key);
-            } else { //TODO WHEN X.KEY IS UPDATE IN THAT CASE?
-                cascadingCut(x, x.getParent());
+            x.setKey(new_key);
+
+            if (new_key < this.findMin().getKey()){ // updating minimum if necessary
+                this.min = x;}
+
+            if (x.getParent() != null && new_key < x.getParent().getKey()){ //need to cascading
+                cascadingCut(x, x.getParent());}
+            // else nothing happen
             }
-            // dont forget to update ranks , numTrees , numMarked (use makeUnmarked() ) , cuts
-            // if make cut put in the subtree as this.start
-            // in cut --> the order of the other children remain the same
-            // should be replaced by student code
-        }
+
 
         private void cut(HeapNode node, HeapNode parent){ //real cut, update rank, unmark
             node.setParent(null);
             makeUnmarked(node); //the marked num will decrease in the func
             parent.setRank(parent.getRank()-1);
+
             if (node.getNext() == node){ // only one child ---> make list of child empty
-                parent.setChild(null);
-            } else { //connect children by byPass node
-                parent.setChild(node.getNext()); //TODO NODE NOT ALWAYS THE FIRST CHILD
+                parent.setChild(null);}
+
+            else { //connect children by byPass node
+
+                if ( parent.getChild() == node ){       // updating first child
+                    parent.setChild(node.getNext()); }
+
                 node.getPrev().setNext(node.getNext());
                 node.getNext().setPrev(node.getPrev());
             }
             addAtStart(node);
         }
 
-        private void cascadingCut(HeapNode node, HeapNode parent){ //update numTree + marks
+        private void cascadingCut(HeapNode node, HeapNode parent){
             cut(node, parent);
             if (parent.getParent()!= null){
                 if (!parent.getMark()){
                     parent.setMark(true);
-                    numMarked++;
+                    numMarked++;    //update numTree + marks
                 } else{
                     cascadingCut(parent, parent.getParent());
-                    numTree ++;
-                    cuts ++;
+                    numTree ++; //update numTree + marks
+                    cuts ++; //update cuts
                 }
             }
         }
@@ -415,13 +429,36 @@ public class FibonacciHeap{
          *
          * ###CRITICAL### : you are NOT allowed to change H.
          */
-        public static int[] kMin (FibonacciHeap H,int k)
-        {
-            int[] arr = new int[100];
-            return arr; // should be replaced by student code
-        }
+        public static int[] kMin (FibonacciHeap H,int k){
+          int[] answer = new int[k];
+          FibonacciHeap help = new FibonacciHeap();
+          help.insert(H.findMin().getKey() , H.findMin());
 
-        /**
+          for (int i = 0 ; i < k ; i++ ){
+                int tmp = help.removeAndPut(); //insert all the origin children of the current minimum & make help.deleteMin() & return the current minimom in help
+                answer[i] = tmp;}
+
+          return answer;
+            }
+
+        private int removeAndPut() { //insert all the origin children of the current minimum & make help.deleteMin() & return the current minimom in help
+            HeapNode origin = this.findMin().getOrigin(); // the origin node in H (the input)
+            HeapNode firstChild = origin.getChild();
+            HeapNode child = firstChild;
+            HeapNode tmp = null;
+
+            while (tmp != firstChild){  //insert all the origin children of the current minimum
+
+                tmp = child.getNext();
+                this.insert(child.getKey() , child);
+                child = tmp;}
+
+           this.deleteMin();
+           return origin.getKey();
+    }
+
+
+    /**
          * public class HeapNode
          *
          * If you wish to implement classes other than FibonacciHeap
@@ -437,19 +474,26 @@ public class FibonacciHeap{
        public HeapNode prev;
        public HeapNode next;
        public boolean marked;
+       private HeapNode origin;
+
        public int key;
        public int rank;
 
             // all functions are O(1)
 
 
-       public HeapNode(int key) {
+       public HeapNode(int key) {this.key = key;  }
+
+       public HeapNode(int key , HeapNode origin){
            this.key = key;
+           this.origin = origin;
        }
 
 
             // set function update the relevant field to the input of the function
             // get function return the relevant field
+
+       public  HeapNode getOrigin(){return this.origin;}
 
        public void setChild(HeapNode node){
            this.child = node;
