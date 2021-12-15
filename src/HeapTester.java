@@ -14,15 +14,15 @@ public class HeapTester {
         System.out.println();
         emptyTestN(); // check if your tree knows how to be empty
 
-        insertDeleteMinTest(1000, 5);
+        insertDeleteMinTest(10, 5);
         // insert keys by increasing / decreasing / increasing & decreasing / random order for some reptitions
         //deleting nodes only by delete min
 
-        insertDeleteByNodeTest(1000, 5);
+        insertDeleteByNodeTest(10, 5);
         // insert keys by increasing / decreasing / increasing & decreasing / random order for some reptitions
         //deleting nodes only by delete node
 
-        DecreaseNodeTest(1000, 5);
+        DecreaseNodeTest(10, 5);
         // decreasing all the nodes by two ways: make each node the minimum or by random integer
 
         counterTest(1000 , 5); // test countersRep without deleteNode or decreaseKey
@@ -175,6 +175,7 @@ public class HeapTester {
         if (!ERROR) {
             System.out.println("checking if your tree handle insertion & deleteNode ");
             System.out.println();
+
             System.out.println("checking increasing order ");
 
             fibonacciHeap = new FibonacciHeap();
@@ -219,18 +220,19 @@ public class HeapTester {
 
     private static void cleanAndCheckNodes(ArrayList<FibonacciHeap.HeapNode> nodes, String message) {
         while (!heap.isEmpty()) {
+            if(!ERROR){
             if (heap.findMin() != fibonacciHeap.findMin().getKey()){
                 ERROR = true;
                 System.out.println(message);
-                System.out.println(" the minimum should be " + heap.findMin() +"and the actual minimum is " + fibonacciHeap.findMin());}
+                System.out.println(" the minimum should be " + heap.findMin() +" and the actual minimum is " + fibonacciHeap.findMin().getKey());}
 
             if (heap.size() != fibonacciHeap.size()) {
                 System.out.println(message);
-                System.out.println(" the size should be " + heap.size() +"and the actual size is " + fibonacciHeap.size());}
+                System.out.println(" the size should be " + heap.size() +" and the actual size is " + fibonacciHeap.size());}
             FibonacciHeap.HeapNode tmp = nodes.get(0);
             nodes.remove(0);
             heap.delete(tmp.getKey());
-            fibonacciHeap.delete(tmp);}
+            fibonacciHeap.delete(tmp);}}
 
         emptyTest(fibonacciHeap , message);
     }
@@ -288,17 +290,18 @@ public class HeapTester {
 
     private static void cleanAndCheckMin(String message) {
         while (!heap.isEmpty()) {
+            if(!ERROR){
             if (heap.findMin() != fibonacciHeap.findMin().getKey()){
                 ERROR = true;
                 System.out.println(message);
-                System.out.println(" the minimum should be " + heap.findMin() +"and the actual minimum is " + fibonacciHeap.findMin());}
+                System.out.println(" the minimum should be " + heap.findMin() +" and the actual minimum is " + fibonacciHeap.findMin().getKey());}
 
              if (heap.size() != fibonacciHeap.size()) {
                  System.out.println(message);
-                 System.out.println(" the size should be " + heap.size() +"and the actual size is " + fibonacciHeap.size());}
+                 System.out.println(" the size should be " + heap.size() +" and the actual size is " + fibonacciHeap.size());}
 
             heap.deleteMin();
-            fibonacciHeap.deleteMin();}
+            fibonacciHeap.deleteMin();}}
 
         emptyTest(fibonacciHeap , message);
     }

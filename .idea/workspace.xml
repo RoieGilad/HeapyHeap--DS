@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="992b8aee-15ac-44e5-9c5b-d76730a13ab4" name="Changes" comment="">
+    <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="some notes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Heap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Heap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FibonacciHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HeapTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeapTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +32,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+  <component name="RunManager" selected="Application.HeapTester">
+    <configuration name="HeapTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HeapTester" />
+      <module name="HeapyHeap--DS" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -47,8 +47,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HeapTester" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -85,13 +97,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/FibonacciHeap.java</url>
-          <line>195</line>
-          <properties class="FibonacciHeap" method="fixListOfRoots">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="24" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Test.java</url>
+          <line>192</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/HeapTester.java</url>
+          <line>223</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -107,7 +107,7 @@ public class FibonacciHeap{
     * Returns true if and only if the heap is empty.
     *   
     */
-    public boolean isEmpty(){	return this.size() == 0;    }    // the heap is empty iff size = 0
+    public boolean isEmpty(){	return this.start == null;    }    // the heap is empty iff start = null
 
    /**
     * public HeapNode insert(int key)
@@ -119,10 +119,11 @@ public class FibonacciHeap{
     */
     public HeapNode insert(int key){
     	HeapNode node = new HeapNode(key);
+        if (this.isEmpty() || key<this.min.getKey()){
+            this.min = node;}
         this.addAtStart(node);
-        if (isEmpty() || key<this.min.getKey()){
-            this.min = node;
-        }
+
+
         this.size ++;
         this.numTree++;
         return node; //why return?
@@ -157,10 +158,11 @@ public class FibonacciHeap{
 
 
         else{ // at least two trees in the heap
-            // updating th start tail if needed:
+            // updating the start tail if needed:
             if (this.start == this.min){
                 this.start = this.min.getNext();
-            } if (this.tail == this.min){
+            }
+            if (this.tail == this.min){
                 this.tail = this.min.getPrev();
             }
 
@@ -198,8 +200,9 @@ public class FibonacciHeap{
             int min = 0;
             numTree = 0; // count again how many trees in the heap of successive linking
             HeapNode currMin = null;
-            HeapNode curr = null;
             this.start = null;
+            this.tail = null;
+
             for (HeapNode node : basket) { // iterate over array and fix prev next and start & tail
 
                 if (node != null) {
@@ -211,27 +214,21 @@ public class FibonacciHeap{
                         currMin = node;
                         min = currMin.getKey();
                         this.start = node;
-                        curr = node;
-//                        this.addAtStart(node);
+                       this.addAtStart(node);
                         first = true;}
 
                      else {
                         if (node.getKey() < min) {
                             min = node.getKey();
                             currMin = node;}
+
+                        this.addAtTail(node);
                         }
-                    curr.setNext(node);
-                     node.setPrev(curr);
-                     curr = node;
-                }
-            }
-            if (numTree!=0) {
-                this.start.setPrev(curr);
-                curr.setNext(this.start);
-            }
-            this.tail = curr;
+
+                }}
             this.min = currMin;
-        }
+    }
+
 
         private void linkAndPut(HeapNode node, HeapNode[]basket ){
             int i = node.getRank();
@@ -354,7 +351,9 @@ public class FibonacciHeap{
          */
         public void decreaseKey (HeapNode x,int delta){
             int new_key = x.getKey()-delta;
-            if (x.getParent() == null | new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
+            x.setKey(new_key);
+            
+            if (x.getParent() == null || new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
                 x.setKey(new_key);
             } else {
                 cascadingCut(x, x.getParent());
