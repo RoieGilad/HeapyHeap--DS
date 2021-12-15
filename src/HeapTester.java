@@ -38,6 +38,7 @@ public class HeapTester {
             System.out.println("checking if your tree handle countersRep()");
             while (cnt < repetitions){
                 if (!ERROR) {
+
             System.out.println("lets just insert!");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
