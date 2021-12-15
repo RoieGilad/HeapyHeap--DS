@@ -5,10 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Heap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Heap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FibonacciHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeapTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeapTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +82,65 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="range">
+                    <value>
+                      <list>
+                        <option value="main..origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="range">
+                    <value>
+                      <list>
+                        <option value="main..origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+        <entry key="2" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />

@@ -117,17 +117,26 @@ public class FibonacciHeap{
     * 
     * Returns the newly created node.
     */
-    public HeapNode insert(int key){
-    	HeapNode node = new HeapNode(key);
-        if (this.isEmpty() || key<this.min.getKey()){
-            this.min = node;}
+   public HeapNode insert(int key) {
+       HeapNode tmp = new HeapNode(key);
+       return this.insert(tmp);
+   }
+
+    private void insert(int key, HeapNode origin) {
+        HeapNode tmp = new HeapNode(key, origin);
+        this.insert(tmp);
+    }
+
+    private HeapNode insert(HeapNode node) {
+        if (this.isEmpty() || node.getKey() < this.min.getKey()) {
+            this.min = node;
+        }
         this.addAtStart(node);
-
-
-        this.size ++;
+        this.size++;
         this.numTree++;
-        return node; //why return?
 
+
+        return node;
     }
    /**
     * public void deleteMin()
@@ -349,19 +358,17 @@ public class FibonacciHeap{
          * Decreases the key of the node x by a non-negative value delta. The structure of the heap should be updated
          * to reflect this change (for example, the cascading cuts procedure should be applied if needed).
          */
-        public void decreaseKey (HeapNode x,int delta){
-            int new_key = x.getKey()-delta;
+        public void decreaseKey(HeapNode x, int delta) {
+            int new_key = x.getKey() - delta;
             x.setKey(new_key);
-            
-            if (x.getParent() == null || new_key >= x.getParent().getKey()){ //if it's a root or it's still legal
-                x.setKey(new_key);
-            } else {
-                cascadingCut(x, x.getParent());
+            if (new_key < this.findMin().getKey()) {
+                this.min = x;
             }
-            // dont forget to update ranks , numTrees , numMarked (use makeUnmarked() ) , cuts
-            // if make cut put in the subtree as this.start
-            // in cut --> the order of the other children remain the same
-            // should be replaced by student code
+
+            if (x.getParent() != null && new_key < x.getParent().getKey()) {
+                this.cascadingCut(x, x.getParent());
+            }
+
         }
 
         private void cut(HeapNode node, HeapNode parent){ //real cut, update rank, unmark
@@ -431,11 +438,32 @@ public class FibonacciHeap{
          *
          * ###CRITICAL### : you are NOT allowed to change H.
          */
-        public static int[] kMin (FibonacciHeap H,int k)
-        {
-            int[] arr = new int[100];
-            return arr; // should be replaced by student code
+        public static int[] kMin(FibonacciHeap H, int k) {
+            int[] answer = new int[k];
+            FibonacciHeap help = new FibonacciHeap();
+            help.insert(H.findMin().getKey(), H.findMin());
+
+            for(int i = 0; i < k; ++i) {
+                int tmp = help.removeAndPut();
+                answer[i] = tmp;
+            }
+
+            return answer;
         }
+
+    private int removeAndPut() {
+        HeapNode origin = this.findMin().getOrigin();
+        HeapNode firstChild = origin.getChild();
+        HeapNode child = firstChild;
+
+        for(HeapNode tmp = null; tmp != firstChild; child = tmp) {
+            tmp = child.getNext();
+            this.insert(child.getKey(), child);
+        }
+
+        this.deleteMin();
+        return origin.getKey();
+    }
 
         /**
          * public class HeapNode
@@ -453,16 +481,22 @@ public class FibonacciHeap{
        public HeapNode prev;
        public HeapNode next;
        public boolean marked;
+       private HeapNode origin;
        public int key;
        public int rank;
 
        public HeapNode(int key) {
            this.key = key;
        }
+       public HeapNode(int key, HeapNode origin) {
+           this.key = key;
+           this.origin = origin;}
+
+       public HeapNode getOrigin(){ return this.origin;}
 
        public void setChild(HeapNode node){
-           this.child = node;
-       }
+           this.child = node;}
+
        public HeapNode getChild(){
            return this.child;
        }

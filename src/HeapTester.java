@@ -227,6 +227,7 @@ public class HeapTester {
                 System.out.println(" the minimum should be " + heap.findMin() +" and the actual minimum is " + fibonacciHeap.findMin().getKey());}
 
             if (heap.size() != fibonacciHeap.size()) {
+                ERROR = true;
                 System.out.println(message);
                 System.out.println(" the size should be " + heap.size() +" and the actual size is " + fibonacciHeap.size());}
             FibonacciHeap.HeapNode tmp = nodes.get(0);
