@@ -1,7 +1,7 @@
 import java.util.TreeSet;
 
 class Heap {
-    private TreeSet<Integer> set;
+    private final TreeSet<Integer> set;
 
     Heap() {
         this.set = new TreeSet<Integer>();
@@ -16,7 +16,7 @@ class Heap {
     }
 
     public void insert(int v) {
-        this.set.add((Integer)v);
+        this.set.add(v);
     }
 
 
@@ -30,11 +30,11 @@ class Heap {
     public int findMin() {
         if (this.isEmpty())
             return -1;
-        return (int)(this.set.first());
+        return this.set.first();
     }
 
     public void delete(int i) {
-        this.set.remove((Integer)i);
+        this.set.remove(i);
 
     }
 }
