@@ -14,18 +14,18 @@ public class HeapTester {
         System.out.println();
         emptyTestN(); // check if your tree knows how to be empty
 
-        insertDeleteMinTest(10, 5);
+        insertDeleteMinTest(10000, 100);
         // insert keys by increasing / decreasing / increasing & decreasing / random order for some reptitions
         //deleting nodes only by delete min
 
-        insertDeleteByNodeTest(10, 5);
+        insertDeleteByNodeTest(10000, 100);
         // insert keys by increasing / decreasing / increasing & decreasing / random order for some reptitions
         //deleting nodes only by delete node
 
-        DecreaseNodeTest(10, 5);
+        DecreaseNodeTest(10000, 100);
         // decreasing all the nodes by two ways: make each node the minimum or by random integer
 
-        counterTest(1000 , 5); // test countersRep without deleteNode or decreaseKey
+        counterTest(10000 , 100); // test countersRep without deleteNode or decreaseKey
 
         //maybe in the future
 //        potentialTest(1000);
@@ -33,13 +33,14 @@ public class HeapTester {
 //        cutTest(1000);
     }
     private static void counterTest(int size , int repetitions) {
+        System.out.println("checking if your tree handle countersRep()");
         if (!ERROR) {
             int cnt = 0;
-            System.out.println("checking if your tree handle countersRep()");
+
             while (cnt < repetitions){
                 if (!ERROR) {
 
-            System.out.println("lets just insert!");
+ //           System.out.println("lets just insert!");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             addKeysRandom(0 , size);
@@ -52,7 +53,7 @@ public class HeapTester {
                 System.out.println("the actual array is " + Arrays.toString(counterHeap));
                 break;}
 
-            System.out.println("delete the minimum and check again ");
+ //           System.out.println("delete the minimum and check again ");
                 fibonacciHeap.deleteMin(); //lets see successive linking
             counterHeap = fibonacciHeap.countersRep();
             answer = getArrayBinary(size-1);
@@ -98,35 +99,37 @@ public class HeapTester {
     private static int[] getArrayBinary(int num) {
         String binary = Integer.toString(num , 2);
         int[] arr = new int[binary.length()];
-
-        for (int j=0 ; j < binary.length() ; j++){
-            arr[j] = Integer.parseInt(String.valueOf(binary.charAt(j)));
+        int j=(binary.length()-1);
+        while (j >= 0){
+            arr[binary.length()-1 -j] = Integer.parseInt(String.valueOf(binary.charAt(j)));
+            j--;
         }
         return arr; }
 
     private static void DecreaseNodeTest(int size, int numRandomReptitions) {
         String func = "in the function DecreaseNodeTest ";
+        System.out.println("checking if your heap handle DecreaseNode");
         int cnt = 0;
         while (cnt < numRandomReptitions){
         if (!ERROR) {
-            System.out.println("checking if your tree handle DecreaseNode - making each node the minimum ");
-            System.out.println();
+ //           System.out.println("checking if your tree handle DecreaseNode - making each node the minimum ");
+ //           System.out.println();
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             ArrayList<FibonacciHeap.HeapNode> nodes = addKeysRandom(0, size);
             Collections.shuffle(nodes);
             decreaseAndCheck(nodes ,false , size );}
 
-        if (!ERROR) {
-            System.out.println("checking if your tree handle DecreaseNode - Random decrease ");
-            System.out.println();
-            fibonacciHeap = new FibonacciHeap();
-            heap = new Heap();
-            ArrayList<FibonacciHeap.HeapNode> nodes = addKeysRandom(0, size);
-            Collections.shuffle(nodes);
-            decreaseAndCheck(nodes ,true , size );}
+//      if (!ERROR) {
+//          System.out.println("checking if your tree handle DecreaseNode - Random decrease ");
+//          System.out.println();
+//          fibonacciHeap = new FibonacciHeap();
+//          heap = new Heap();
+//          ArrayList<FibonacciHeap.HeapNode> nodes = addKeysRandom(0, size);
+//          Collections.shuffle(nodes);
+//          decreaseAndCheck(nodes ,true , size );}
         cnt++;}
-        if (!ERROR){ System.out.println("passed counterTest!");}
+        if (!ERROR){ System.out.println("passed DecreaseNodeTest!");}
     }
 
 
@@ -141,7 +144,7 @@ public class HeapTester {
         }
         else {
             for (FibonacciHeap.HeapNode node: nodes) {
-                int delta = rand.nextInt();
+                int delta = size + rand.nextInt();
                 decrease(node , delta);
                 checkMin();
             }
@@ -174,9 +177,8 @@ public class HeapTester {
         String func = "in the function insertDeleteByNodeTest ";
         if (!ERROR) {
             System.out.println("checking if your tree handle insertion & deleteNode ");
-            System.out.println();
 
-            System.out.println("checking increasing order ");
+  //          System.out.println("checking increasing order ");
 
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
@@ -185,7 +187,7 @@ public class HeapTester {
             cleanAndCheckNodes(nodes ,func + "Error in checking increasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking decreasing order ");
+ //           System.out.println("checking decreasing order ");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             ArrayList<FibonacciHeap.HeapNode> nodes = addKeysReverse(0, size);
@@ -193,7 +195,7 @@ public class HeapTester {
             cleanAndCheckNodes(nodes ,func + "Error in checking decreasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking increasing & decreasing  order ");
+  //          System.out.println("checking increasing & decreasing  order ");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             ArrayList<FibonacciHeap.HeapNode> nodes = addKeys(0, size);
@@ -203,7 +205,7 @@ public class HeapTester {
             cleanAndCheckNodes(nodes ,func + "Error in checking increasing & decreasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking Random order ");
+  //          System.out.println("checking Random order ");
             int cnt = 0;
             while (cnt < numRandomReptitions){
                 if (!ERROR) {
@@ -244,10 +246,11 @@ public class HeapTester {
 
     private static void insertDeleteMinTest(int size ,int numRandomReptitions) {
         String func = "in the function insertDeleteMinTest ";
+        System.out.println("checking if your tree handle insertion & deleteMin() ");
         if (!ERROR) {
-            System.out.println("checking if your tree handle insertion & deleteMin() ");
-            System.out.println();
-            System.out.println("checking increasing order ");
+
+     //       System.out.println();
+    //        System.out.println("checking increasing order ");
 
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
@@ -255,14 +258,14 @@ public class HeapTester {
             cleanAndCheckMin(func + "Error in checking increasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking decreasing order ");
+    //        System.out.println("checking decreasing order ");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             addKeysReverse(0, size);
             cleanAndCheckMin(func + "Error in checking decreasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking increasing & decreasing  order ");
+     //       System.out.println("checking increasing & decreasing  order ");
             fibonacciHeap = new FibonacciHeap();
             heap = new Heap();
             addKeys(0, size);
@@ -270,7 +273,7 @@ public class HeapTester {
             cleanAndCheckMin(func + "Error in checking increasing & decreasing order "); // take your heap and delete minimum till the heap is empty
         }
         if (!ERROR) {
-            System.out.println("checking Random order ");
+    //        System.out.println("checking Random order ");
             int cnt = 0;
             while (cnt < numRandomReptitions){
                 if (!ERROR) {

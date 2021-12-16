@@ -169,12 +169,12 @@ public class Test {
             grade -= 8;
         }
         try {
-            //test30();
+            test30();
         } catch (Exception e) {
             System.out.println("Bug found in " + "test30");
             grade -= 8;
         }
-
+        System.out.println("your final grade is "+(grade+20));
         System.exit((int) grade);
     }
 

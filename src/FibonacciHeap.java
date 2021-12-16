@@ -59,6 +59,7 @@ public class FibonacciHeap{
 
     private HeapNode  link(HeapNode node1 , HeapNode node2){
         Links++;
+        this.numTree--;
 
         if (node1.getKey() > node2.getKey()) { // always node1 < node2
             HeapNode tmp = node1;
@@ -383,6 +384,8 @@ public class FibonacciHeap{
                 node.getNext().setPrev(node.getPrev());
             }
             addAtStart(node);
+            this.numTree++;
+            cuts++;
         }
 
         private void cascadingCut(HeapNode node, HeapNode parent){ //update numTree + marks
@@ -393,8 +396,6 @@ public class FibonacciHeap{
                     numMarked++;
                 } else{
                     cascadingCut(parent, parent.getParent());
-                    numTree ++;
-                    cuts ++;
                 }
             }
         }
