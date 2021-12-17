@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="some notes">
+    <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="&quot;our heap in the middle of our shit&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FibonacciHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HeapTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeapTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,13 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunManager" selected="Application.HeapTester">
+    <configuration name="HeapPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HeapPrinter" />
+      <module name="HeapyHeap--DS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HeapTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HeapTester" />
       <module name="HeapyHeap--DS" />
@@ -62,6 +70,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HeapTester" />
+        <item itemvalue="Application.HeapPrinter" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -77,8 +86,16 @@
       <workItem from="1639160430932" duration="4688000" />
       <workItem from="1639406663382" duration="9705000" />
       <workItem from="1639478496165" duration="8600000" />
-      <workItem from="1639676381926" duration="5568000" />
+      <workItem from="1639676381926" duration="8870000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;our heap in the middle of our shit&quot;">
+      <created>1639683330312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639683330312</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +166,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;our heap in the middle of our shit&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;our heap in the middle of our shit&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -26,7 +26,7 @@ public class HeapTester {
         // decreasing all the nodes by two ways: make each node the minimum or by random integer
 
         counterTest(10000 , 100); // test countersRep without deleteNode or decreaseKey
-
+        if(ERROR){ HeapPrinter.print(fibonacciHeap, false);}
         //maybe in the future
 //        potentialTest(1000);
 //        linkTest(1000);

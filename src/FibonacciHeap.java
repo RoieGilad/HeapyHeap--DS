@@ -466,7 +466,9 @@ public class FibonacciHeap{
         return origin.getKey();
     }
 
-        /**
+    public HeapNode getFirst() { return this.start; }
+
+    /**
          * public class HeapNode
          *
          * If you wish to implement classes other than FibonacciHeap
