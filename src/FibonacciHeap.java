@@ -379,7 +379,9 @@ public class FibonacciHeap{
             if (node.getNext() == node){
                 parent.setChild(null);
             } else { //connect children
-                parent.setChild(node.getNext());
+                if (parent.getChild() == node) {
+                    parent.setChild(node.getNext()); //TODO NOT SURE!!!
+                }
                 node.getPrev().setNext(node.getNext());
                 node.getNext().setPrev(node.getPrev());
             }

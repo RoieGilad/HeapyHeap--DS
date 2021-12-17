@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="&quot;our heap in the middle of our shit&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/HeapTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FibonacciHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeapTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeapTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +28,19 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunManager" selected="Application.HeapTester">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HeapPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HeapPrinter" />
       <module name="HeapyHeap--DS" />
@@ -50,19 +58,6 @@
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="HeapyHeap--DS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
