@@ -26,12 +26,46 @@ public class HeapTester {
         // decreasing all the nodes by two ways: make each node the minimum or by random integer
 
         counterTest(10000 , 100); // test countersRep without deleteNode or decreaseKey
+
+        kMinTest(10 , 100); // power is the size of the heap (heap = one binomial tree)
         if(ERROR){ HeapPrinter.print(fibonacciHeap, false);}
         //maybe in the future
 //        potentialTest(1000);
 //        linkTest(1000);
 //        cutTest(1000);
     }
+    private static void kMinTest(int power , int repetitions) {
+        if (!ERROR){
+            System.out.println("lets check kMinTest");
+            int cnt = 0;
+            int size = (int)Math.pow(2,power)+1;
+            Random rand = new Random();
+            while (cnt < repetitions){
+                if (!ERROR){
+                    int k = Math.abs(rand.nextInt(size+1));
+                    kMinTest2(size , k);}
+                cnt++;}
+            if(!ERROR){
+                System.out.println("passed kMinTest");}
+
+    }}
+
+
+    private static void kMinTest2(int size, int k) {
+        int[] correct = new int[k];
+        for (int j = 0 ; j < k ; j++){ correct[j] = j;}
+        fibonacciHeap = new FibonacciHeap();
+        heap = new Heap();
+        ArrayList<FibonacciHeap.HeapNode> arr = addKeysRandom(0 ,size );
+        fibonacciHeap.delete(arr.get(arr.size() - 1));
+        int[] outPut = FibonacciHeap.kMin(fibonacciHeap, k);
+        if (Arrays.equals(correct, outPut)){
+            System.out.println("problem in kMin");
+            System.out.println("the array should be " + Arrays.toString(correct));
+            System.out.println("and the output of kMin is "+ Arrays.toString(outPut));
+            ERROR = true;}
+    }
+
     private static void counterTest(int size , int repetitions) {
         System.out.println("checking if your tree handle countersRep()");
         if (!ERROR) {
