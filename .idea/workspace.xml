@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="&quot;our heap in the middle of our shit&quot;">
+    <list default="true" id="744c7754-4587-4017-94d2-00e518a1a3dc" name="Default Changelist" comment="&quot;added kMin tester &amp; added heapPrinter&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap$HeapNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HeapyHeap--DS/FibonacciHeap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeapTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeapTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/קובץ תיעוד HearyHeap.docx" beforeDir="false" afterPath="$PROJECT_DIR$/קובץ תיעוד HearyHeap.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639683330312</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;added kMin tester &amp; added heapPrinter&quot;">
+      <created>1639830642253</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639830642253</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +178,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;our heap in the middle of our shit&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;our heap in the middle of our shit&quot;" />
+    <MESSAGE value="&quot;added kMin tester &amp; added heapPrinter&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;added kMin tester &amp; added heapPrinter&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
